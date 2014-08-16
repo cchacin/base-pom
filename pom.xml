@@ -1,9 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0            http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+           http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.cchacin</groupId>
     <artifactId>basepom</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <name>Base POM</name>
     <description>Base POM for Maven Java Projects</description>
@@ -14,7 +16,7 @@
         <url>scm:git:git@github.com:cchacin/base-pom.git</url>
         <connection>scm:git:git@github.com:cchacin/base-pom.git</connection>
         <developerConnection>scm:git:git@github.com:cchacin/base-pom.git</developerConnection>
-        <tag>v0.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <prerequisites>
@@ -48,10 +50,7 @@
         <project.reporting.inputEncoding>UTF-8</project.reporting.inputEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <tomee.version>1.7.0</tomee.version>
-        <tomee.classifier>plus</tomee.classifier>
-
-        <basepom.maven.version>3.0.5</basepom.maven.version>
+        <basepom.maven.version>3.0.1</basepom.maven.version>
         <basepom.build.memory.initial>1024m</basepom.build.memory.initial>
         <basepom.build.memory.max>1024m</basepom.build.memory.max>
 
@@ -74,7 +73,7 @@
         <basepom.plugin.javadoc.version>2.9.1</basepom.plugin.javadoc.version>
         <basepom.plugin.pmd.version>3.2</basepom.plugin.pmd.version>
         <basepom.plugin.release.version>2.5</basepom.plugin.release.version>
-        <basepom.plugin.gpg.version>1.5</basepom.plugin.gpg.version>
+        <basepom.plugin.gpg.version>1.4</basepom.plugin.gpg.version>
         <basepom.plugin.resources.version>2.6</basepom.plugin.resources.version>
         <basepom.plugin.scm.version>1.9.1</basepom.plugin.scm.version>
         <basepom.plugin.shade.version>2.3</basepom.plugin.shade.version>
@@ -83,26 +82,12 @@
         <basepom.plugin.surefire.version>2.17</basepom.plugin.surefire.version>
         <basepom.plugin.failsafe.version>2.17</basepom.plugin.failsafe.version>
         <basepom.plugin.versions.version>2.1</basepom.plugin.versions.version>
-        <basepom.plugin.license.version>2.6</basepom.plugin.license.version>
 
     </properties>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus snapshot repository</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Sonatype Nexus release repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-
     <build>
 
-        <finalName>${project.artifactId}-${project.version}</finalName>
+        <finalName>${project.artifactId}-${project.version}-${buildNumber}</finalName>
 
         <resources>
             <resource>
@@ -126,9 +111,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-gpg-plugin</artifactId>
                     <version>${basepom.plugin.gpg.version}</version>
-                    <configuration>
-                        <passphrase>${gpg.passphrase}</passphrase>
-                    </configuration>
                     <executions>
                         <execution>
                             <id>sign-artifacts</id>
@@ -175,6 +157,9 @@
                         <reuseForks>false</reuseForks>
                         <useSystemClassLoader>false</useSystemClassLoader>
                         <failIfNoTests>false</failIfNoTests>
+                        <argLine>${argLine} -Dfile.encoding=${project.build.sourceEncoding}
+                            -Xms${basepom.build.memory.initial} -Xmx${basepom.build.memory.max} -XX:MaxPermSize=256m
+                        </argLine>
                         <systemPropertyVariables>
                             <buildDirectory>${project.build.directory}</buildDirectory>
                         </systemPropertyVariables>
@@ -200,6 +185,9 @@
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>${basepom.plugin.failsafe.version}</version>
                     <configuration>
+                        <argLine>${argLine} -Dfile.encoding=${project.build.sourceEncoding}
+                            -Xms${basepom.build.memory.initial} -Xmx${basepom.build.memory.max} -XX:MaxPermSize=256m
+                        </argLine>
                         <includes>
                             <include>**/*ITest.java</include>
                             <include>**/*ITests.java</include>
@@ -270,7 +258,7 @@
                         <removeDefaultWebapps>true</removeDefaultWebapps>
                         <tomeeVersion>${tomee.version}</tomeeVersion>
                         <tomeeClassifier>${tomee.classifier}</tomeeClassifier>
-                        <classpaths />
+                        <classpaths/>
                         <libs>
                             <lib>mysql:mysql-connector-java:5.1.31</lib>
                         </libs>
@@ -351,7 +339,7 @@
                 <plugin>
                     <groupId>com.mycila</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>${basepom.plugin.license.version}</version>
+                    <version>2.5</version>
                     <configuration>
                         <basedir>${basedir}</basedir>
                         <header>${basedir}/header.txt</header>
@@ -454,6 +442,9 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>findbugs-maven-plugin</artifactId>
                     <version>${basepom.plugin.findbugs.version}</version>
+                    <configuration>
+                        <jvmargs>-Xms${basepom.build.memory.initial} -Xmx${basepom.build.memory.max}</jvmargs>
+                    </configuration>
                 </plugin>
 
                 <plugin>
