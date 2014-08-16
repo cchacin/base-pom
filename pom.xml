@@ -48,7 +48,10 @@
         <project.reporting.inputEncoding>UTF-8</project.reporting.inputEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <basepom.maven.version>3.0.1</basepom.maven.version>
+        <tomee.version>1.7.0</tomee.version>
+        <tomee.classifier>plus</tomee.classifier>
+
+        <basepom.maven.version>3.0.5</basepom.maven.version>
         <basepom.build.memory.initial>1024m</basepom.build.memory.initial>
         <basepom.build.memory.max>1024m</basepom.build.memory.max>
 
@@ -71,7 +74,7 @@
         <basepom.plugin.javadoc.version>2.9.1</basepom.plugin.javadoc.version>
         <basepom.plugin.pmd.version>3.2</basepom.plugin.pmd.version>
         <basepom.plugin.release.version>2.5</basepom.plugin.release.version>
-        <basepom.plugin.gpg.version>1.4</basepom.plugin.gpg.version>
+        <basepom.plugin.gpg.version>1.5</basepom.plugin.gpg.version>
         <basepom.plugin.resources.version>2.6</basepom.plugin.resources.version>
         <basepom.plugin.scm.version>1.9.1</basepom.plugin.scm.version>
         <basepom.plugin.shade.version>2.3</basepom.plugin.shade.version>
@@ -80,6 +83,7 @@
         <basepom.plugin.surefire.version>2.17</basepom.plugin.surefire.version>
         <basepom.plugin.failsafe.version>2.17</basepom.plugin.failsafe.version>
         <basepom.plugin.versions.version>2.1</basepom.plugin.versions.version>
+        <basepom.plugin.license.version>2.6</basepom.plugin.license.version>
 
     </properties>
 
@@ -171,9 +175,6 @@
                         <reuseForks>false</reuseForks>
                         <useSystemClassLoader>false</useSystemClassLoader>
                         <failIfNoTests>false</failIfNoTests>
-                        <argLine>${argLine} -Dfile.encoding=${project.build.sourceEncoding}
-                            -Xms${basepom.build.memory.initial} -Xmx${basepom.build.memory.max} -XX:MaxPermSize=256m
-                        </argLine>
                         <systemPropertyVariables>
                             <buildDirectory>${project.build.directory}</buildDirectory>
                         </systemPropertyVariables>
@@ -199,9 +200,6 @@
                     <artifactId>maven-failsafe-plugin</artifactId>
                     <version>${basepom.plugin.failsafe.version}</version>
                     <configuration>
-                        <argLine>${argLine} -Dfile.encoding=${project.build.sourceEncoding}
-                            -Xms${basepom.build.memory.initial} -Xmx${basepom.build.memory.max} -XX:MaxPermSize=256m
-                        </argLine>
                         <includes>
                             <include>**/*ITest.java</include>
                             <include>**/*ITests.java</include>
@@ -353,7 +351,7 @@
                 <plugin>
                     <groupId>com.mycila</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>2.5</version>
+                    <version>${basepom.plugin.license.version}</version>
                     <configuration>
                         <basedir>${basedir}</basedir>
                         <header>${basedir}/header.txt</header>
@@ -456,9 +454,6 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>findbugs-maven-plugin</artifactId>
                     <version>${basepom.plugin.findbugs.version}</version>
-                    <configuration>
-                        <jvmargs>-Xms${basepom.build.memory.initial} -Xmx${basepom.build.memory.max}</jvmargs>
-                    </configuration>
                 </plugin>
 
                 <plugin>
