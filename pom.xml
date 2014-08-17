@@ -3,7 +3,7 @@
     <groupId>com.github.cchacin</groupId>
     <artifactId>basepom</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.4</version>
 
     <name>Base POM</name>
     <description>Base POM for Maven Java Projects</description>
