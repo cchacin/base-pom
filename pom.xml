@@ -1,9 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.cchacin</groupId>
     <artifactId>basepom</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.4</version>
+    <version>0.0.5-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+        <!--Fixes broken Maven 3 warning-->
+        <relativePath/>
+    </parent>
 
     <name>Base POM</name>
     <description>Base POM for Maven Java Projects</description>
@@ -16,19 +25,6 @@
         <developerConnection>scm:git:git@github.com:cchacin/base-pom.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus snapshot repository</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Sonatype Nexus release repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 
     <prerequisites>
         <maven>${basepom.maven.version}</maven>
@@ -269,7 +265,7 @@
                         <removeDefaultWebapps>true</removeDefaultWebapps>
                         <tomeeVersion>${tomee.version}</tomeeVersion>
                         <tomeeClassifier>${tomee.classifier}</tomeeClassifier>
-                        <classpaths />
+                        <classpaths/>
                         <libs>
                             <lib>mysql:mysql-connector-java:5.1.31</lib>
                         </libs>
