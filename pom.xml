@@ -14,8 +14,8 @@
         <relativePath/>
     </parent>
 
-    <name>Base POM</name>
-    <description>Base POM for Maven Java Projects</description>
+    <name>Base POM Java EE</name>
+    <description>Base POM for Java EE Projects</description>
     <inceptionYear>2014</inceptionYear>
     <url>https://github.com/cchacin/base-pom</url>
 
@@ -57,41 +57,19 @@
         <project.reporting.inputEncoding>UTF-8</project.reporting.inputEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <tomee.version>1.7.0</tomee.version>
-        <tomee.classifier>plus</tomee.classifier>
-
         <basepom.maven.version>3.0.5</basepom.maven.version>
-        <basepom.build.memory.initial>1024m</basepom.build.memory.initial>
-        <basepom.build.memory.max>1024m</basepom.build.memory.max>
 
-        <basepom.plugin.assembly.version>2.4.1</basepom.plugin.assembly.version>
-        <basepom.plugin.buildnumer.version>1.3</basepom.plugin.buildnumer.version>
         <basepom.plugin.checkstyle.version>2.12.1</basepom.plugin.checkstyle.version>
-        <basepom.plugin.clean.version>2.5</basepom.plugin.clean.version>
-        <basepom.plugin.cobertura.version>2.6</basepom.plugin.cobertura.version>
-        <basepom.plugin.compiler.version>3.1</basepom.plugin.compiler.version>
-        <basepom.plugin.dependency.version>2.8</basepom.plugin.dependency.version>
-        <basepom.plugin.dependency-versions-check.version>2.0.2</basepom.plugin.dependency-versions-check.version>
-        <basepom.plugin.deploy.version>2.8.1</basepom.plugin.deploy.version>
-        <basepom.plugin.duplicate-finder.version>1.0.7</basepom.plugin.duplicate-finder.version>
-        <basepom.plugin.enforcer.version>1.3.1</basepom.plugin.enforcer.version>
-        <basepom.plugin.exec.version>1.3.2</basepom.plugin.exec.version>
         <basepom.plugin.findbugs.version>3.0.0</basepom.plugin.findbugs.version>
         <basepom.plugin.git-commit-id.version>2.1.10</basepom.plugin.git-commit-id.version>
-        <basepom.plugin.install.version>2.5.1</basepom.plugin.install.version>
-        <basepom.plugin.jar.version>2.5</basepom.plugin.jar.version>
-        <basepom.plugin.javadoc.version>2.9.1</basepom.plugin.javadoc.version>
         <basepom.plugin.pmd.version>3.2</basepom.plugin.pmd.version>
         <basepom.plugin.release.version>2.5</basepom.plugin.release.version>
         <basepom.plugin.gpg.version>1.5</basepom.plugin.gpg.version>
-        <basepom.plugin.resources.version>2.6</basepom.plugin.resources.version>
         <basepom.plugin.scm.version>1.9.1</basepom.plugin.scm.version>
-        <basepom.plugin.shade.version>2.3</basepom.plugin.shade.version>
-        <basepom.plugin.site.version>3.4</basepom.plugin.site.version>
-        <basepom.plugin.source.version>2.3</basepom.plugin.source.version>
+        <basepom.plugin.resources.version>2.6</basepom.plugin.resources.version>
+        <basepom.plugin.war.version>2.4</basepom.plugin.war.version>
         <basepom.plugin.surefire.version>2.17</basepom.plugin.surefire.version>
         <basepom.plugin.failsafe.version>2.17</basepom.plugin.failsafe.version>
-        <basepom.plugin.versions.version>2.1</basepom.plugin.versions.version>
         <basepom.plugin.license.version>2.6</basepom.plugin.license.version>
 
     </properties>
@@ -115,43 +93,7 @@
         </testResources>
 
         <pluginManagement>
-
             <plugins>
-
-                <!-- Compiler plugin -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${basepom.plugin.compiler.version}</version>
-                    <configuration>
-                        <source>${project.build.targetJdk}</source>
-                        <target>${project.build.targetJdk}</target>
-                        <encoding>${project.build.sourceEncoding}</encoding>
-                        <meminitial>${basepom.build.memory.initial}</meminitial>
-                        <maxmem>${basepom.build.memory.max}</maxmem>
-                        <showWarnings>true</showWarnings>
-                    </configuration>
-                </plugin>
-
-                <!-- Enforcer plugin -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>${basepom.plugin.enforcer.version}</version>
-                    <configuration>
-                        <skip>false</skip>
-                        <fail>true</fail>
-                        <failFast>false</failFast>
-                        <rules>
-                            <requireMavenVersion>
-                                <version>[${basepom.maven.version},)</version>
-                            </requireMavenVersion>
-                            <requireJavaVersion>
-                                <version>${project.build.targetJdk}</version>
-                            </requireJavaVersion>
-                        </rules>
-                    </configuration>
-                </plugin>
 
                 <!-- Resources plugin -->
                 <plugin>
@@ -214,28 +156,11 @@
                     </executions>
                 </plugin>
 
-                <!-- Jar plugin -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>${basepom.plugin.jar.version}</version>
-                    <configuration>
-                        <skipIfEmpty>true</skipIfEmpty>
-                        <archive>
-                            <manifest>
-                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-                                <addClasspath>false</addClasspath>
-                            </manifest>
-                        </archive>
-                    </configuration>
-                </plugin>
-
                 <!-- War plugin -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>${basepom.plugin.war.version}</version>
                     <configuration>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                         <webResources>
@@ -291,41 +216,6 @@
                     </executions>
                 </plugin>
 
-                <!-- Assembly plugin -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>${basepom.plugin.assembly.version}</version>
-                    <configuration>
-                        <!-- must be true for jar-with-dependencies builds -->
-                        <appendAssemblyId>true</appendAssemblyId>
-                        <!-- Always use GNU tar mode. -->
-                        <tarLongFileMode>gnu</tarLongFileMode>
-                    </configuration>
-                </plugin>
-
-                <!-- Dependency check plugin -->
-                <plugin>
-                    <groupId>com.ning.maven.plugins</groupId>
-                    <artifactId>maven-dependency-versions-check-plugin</artifactId>
-                    <version>${basepom.plugin.dependency-versions-check.version}</version>
-                    <configuration>
-                        <skip>false</skip>
-                        <failBuildInCaseOfConflict>true</failBuildInCaseOfConflict>
-                    </configuration>
-                </plugin>
-
-                <!-- Duplicate finder plugin -->
-                <plugin>
-                    <groupId>com.ning.maven.plugins</groupId>
-                    <artifactId>maven-duplicate-finder-plugin</artifactId>
-                    <version>${basepom.plugin.duplicate-finder.version}</version>
-                    <configuration>
-                        <skip>false</skip>
-                        <failBuildInCaseOfConflict>false</failBuildInCaseOfConflict>
-                    </configuration>
-                </plugin>
-
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
@@ -351,31 +241,6 @@
                             </goals>
                         </execution>
                     </executions>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${basepom.plugin.javadoc.version}</version>
-                    <configuration>
-                        <doclet>org.jboss.apiviz.APIviz</doclet>
-                        <docletArtifact>
-                            <groupId>org.jboss.apiviz</groupId>
-                            <artifactId>apiviz</artifactId>
-                            <version>1.3.2.GA</version>
-                        </docletArtifact>
-                        <useStandardDocletOptions>true</useStandardDocletOptions>
-                        <charset>${project.build.sourceEncoding}</charset>
-                        <encoding>${project.build.sourceEncoding}</encoding>
-                        <docencoding>${project.build.sourceEncoding}</docencoding>
-                        <breakiterator>true</breakiterator>
-                        <version>true</version>
-                        <author>true</author>
-                        <keywords>true</keywords>
-                        <additionalparam>
-                            -quiet -sourceclasspath ${project.build.outputDirectory}
-                        </additionalparam>
-                    </configuration>
                 </plugin>
 
                 <plugin>
@@ -437,53 +302,11 @@
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-clean-plugin</artifactId>
-                    <version>${basepom.plugin.clean.version}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${basepom.plugin.deploy.version}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
                     <version>${basepom.plugin.release.version}</version>
                     <configuration>
                         <tagNameFormat>v@{project.version}</tagNameFormat>
                     </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-install-plugin</artifactId>
-                    <version>${basepom.plugin.install.version}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>${basepom.plugin.source.version}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-shade-plugin</artifactId>
-                    <version>${basepom.plugin.shade.version}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>${basepom.plugin.site.version}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>versions-maven-plugin</artifactId>
-                    <version>${basepom.plugin.versions.version}</version>
                 </plugin>
 
                 <plugin>
@@ -498,176 +321,36 @@
                     <version>${basepom.plugin.checkstyle.version}</version>
                 </plugin>
 
-            </plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${basepom.plugin.gpg.version}</version>
+                    <executions>
+                        <execution>
+                            <id>sign-artifacts</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
 
+            </plugins>
         </pluginManagement>
 
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>default</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-resources-plugin</artifactId>
             </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>buildnumber-maven-plugin</artifactId>
-                <executions>
-                    <!-- Populates the ${buildNumber} variable with the most recent git commit tag (or sha if no tag exists) -->
-                    <execution>
-                        <id>buildNumber</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>create</goal>
-                        </goals>
-                        <configuration>
-                            <shortRevisionLength>10</shortRevisionLength>
-                            <doCheck>false</doCheck>
-                            <doUpdate>false</doUpdate>
-                        </configuration>
-                    </execution>
-                    <!-- Populates the ${epkgBuildNumber} variable with a timestamp suitable for epkg artifacts -->
-                    <execution>
-                        <id>epkgBuildNumber</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>create</goal>
-                        </goals>
-                        <configuration>
-                            <buildNumberPropertyName>epkgBuildNumber</buildNumberPropertyName>
-                            <format>{0,date,yyyy.MM.dd_HH.mm}</format>
-                            <items>
-                                <item>timestamp</item>
-                            </items>
-                            <doCheck>false</doCheck>
-                            <doUpdate>false</doUpdate>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>revision</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>default</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>analyze-only</goal>
-                            <goal>analyze-duplicate</goal>
-                            <goal>analyze-dep-mgt</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-tests</id>
-                        <phase>package</phase>
-                        <goals>
-                            <!-- Always build a test-jar (if test classes present) -->
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>com.ning.maven.plugins</groupId>
-                <artifactId>maven-dependency-versions-check-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>default</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>com.ning.maven.plugins</groupId>
-                <artifactId>maven-duplicate-finder-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>default</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <phase>package</phase>
-                        <!-- Build source jars for both code and tests -->
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                            <goal>test-jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>${basepom.plugin.gpg.version}</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
             </plugin>
         </plugins>
 
