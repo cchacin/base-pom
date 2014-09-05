@@ -66,6 +66,8 @@
         <basepom.plugin.gpg.version>1.5</basepom.plugin.gpg.version>
         <basepom.plugin.scm.version>1.9.1</basepom.plugin.scm.version>
         <basepom.plugin.resources.version>2.6</basepom.plugin.resources.version>
+        <basepom.plugin.source.version>2.3</basepom.plugin.source.version>
+        <basepom.plugin.javadoc.version>2.9.1</basepom.plugin.javadoc.version>
         <basepom.plugin.war.version>2.4</basepom.plugin.war.version>
         <basepom.plugin.surefire.version>2.17</basepom.plugin.surefire.version>
         <basepom.plugin.failsafe.version>2.17</basepom.plugin.failsafe.version>
@@ -95,7 +97,9 @@
             <plugins>
 
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
+                    <version>${basepom.plugin.source.version}</version>
                     <executions>
                         <execution>
                             <id>sources</id>
@@ -106,7 +110,9 @@
                     </executions>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${basepom.plugin.javadoc.version}</version>
                     <executions>
                         <execution>
                             <id>javadoc</id>
