@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
-        <version>7</version>
+        <version>9</version>
         <!--Fixes broken Maven 3 warning-->
         <relativePath />
     </parent>
@@ -31,9 +31,9 @@
 
     <licenses>
         <license>
-            <name>Apache v2</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-            <distribution>manual</distribution>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
 
