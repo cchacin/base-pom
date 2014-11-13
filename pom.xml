@@ -56,7 +56,7 @@
         <project.reporting.inputEncoding>UTF-8</project.reporting.inputEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <basepom.maven.version>3.0.5</basepom.maven.version>
+        <basepom.maven.version>3.0.1</basepom.maven.version>
 
         <basepom.plugin.checkstyle.version>2.12.1</basepom.plugin.checkstyle.version>
         <basepom.plugin.findbugs.version>3.0.0</basepom.plugin.findbugs.version>
@@ -288,6 +288,7 @@
                         <aggregate>false</aggregate>
                         <includes>
                             <include>src/main/java/</include>
+                            <include>src/test/java/</include>
                         </includes>
                         <excludes>
                             <exclude>**/README</exclude>
