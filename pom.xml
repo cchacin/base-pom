@@ -3,7 +3,7 @@
     <groupId>com.github.cchacin</groupId>
     <artifactId>basepom</artifactId>
     <packaging>pom</packaging>
-    <version>0.1.6</version>
+    <version>0.1.7-SNAPSHOT</version>
 
     <parent>
         <groupId>org.sonatype.oss</groupId>
@@ -22,7 +22,7 @@
         <url>scm:git:git@github.com:cchacin/base-pom.git</url>
         <connection>scm:git:git@github.com:cchacin/base-pom.git</connection>
         <developerConnection>scm:git:git@github.com:cchacin/base-pom.git</developerConnection>
-        <tag>v0.1.6</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <prerequisites>
