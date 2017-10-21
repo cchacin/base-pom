@@ -66,26 +66,26 @@
         <project.reporting.inputEncoding>UTF-8</project.reporting.inputEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <maven.compiler.target>1.7</maven.compiler.target>
-        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
 
         <maven.version>3.0.1</maven.version>
 
-        <checkstyle.version>2.13</checkstyle.version>
-        <findbugs.version>3.0.0</findbugs.version>
+        <checkstyle.version>2.17</checkstyle.version>
+        <findbugs.version>3.0.5</findbugs.version>
         <git-commit-id.version>2.1.10</git-commit-id.version>
-        <pmd.version>3.3</pmd.version>
-        <release.version>2.5.1</release.version>
+        <pmd.version>3.8</pmd.version>
+        <release.version>2.5.3</release.version>
         <gpg.version>1.6</gpg.version>
         <scm.version>1.9.1</scm.version>
-        <resources.version>2.7</resources.version>
-        <source.version>2.4</source.version>
-        <javadoc.version>2.10.1</javadoc.version>
-        <war.version>2.6</war.version>
-        <surefire.version>2.18.1</surefire.version>
-        <failsafe.version>2.18.1</failsafe.version>
-        <license.version>2.9</license.version>
-        <compiler.version>3.3</compiler.version>
+        <resources.version>3.0.2</resources.version>
+        <source.version>3.0.1</source.version>
+        <javadoc.version>3.0.0-M1</javadoc.version>
+        <war.version>3.2.0</war.version>
+        <surefire.version>2.20.1</surefire.version>
+        <failsafe.version>2.20.1</failsafe.version>
+        <license.version>3.0</license.version>
+        <compiler.version>3.7.0</compiler.version>
         <cobertura.version>2.7</cobertura.version>
     </properties>
 
